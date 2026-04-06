@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte des Boissons — Kafeenn Coffee Shop</title>
+  <meta name="description" content="Carte digitale des boissons du Kafeenn Coffee Shop à Quimper.">
+  <meta name="theme-color" content="#2e3330">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+    /* Styles spécifiques pour la carte digitale (optimisée mobile) */
+    body {
+      background: var(--color-bg);
+    }
+    .digital-menu-header {
+      text-align: center;
+      padding: var(--space-12) var(--space-4) var(--space-4);
+      background: oklch(from var(--color-bg) l c h / 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-divider);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .back-to-site {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .back-to-site:hover {
+      color: var(--color-accent);
+    }
+    .back-to-site svg {
+      width: 20px;
+      height: 20px;
+    }
+    .digital-menu-header img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: var(--space-2);
+    }
+    .digital-menu-header h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-text);
+      margin-bottom: 0;
+      text-transform: uppercase;
+    }
+    .digital-menu-header p {
+      font-family: var(--font-accent);
+      font-size: var(--text-lg);
+      color: var(--color-accent);
+      margin-top: -4px;
+      text-align: center;
+      width: 100%;
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .drinks.section {
+      padding-top: var(--space-8);
+      background: transparent;
+    }
+    .drinks__category {
+      box-shadow: var(--shadow-sm);
+    }
+    /* Masquer les éléments non pertinents pour le menu digital */
+    .section-intro, .section-subtitle, .section-title {
+      display: none;
+    }
+    
+    .menu-images {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+    .menu-images img {
+      width: 100%;
+      max-width: 400px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+    }
+    @media (min-width: 768px) {
+      .menu-images {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .menu-images img {
+        width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="digital-menu-header">
+    <a href="index.html" class="back-to-site" aria-label="Retour au site">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      <span data-i18n="back.btn">Retour</span>
+    </a>
+    <div class="lang-switch" style="position: absolute; top: var(--space-4); right: var(--space-4);">
+      <button class="lang-switch-btn active" data-lang="fr">FR</button>
+      <span class="lang-separator">|</span>
+      <button class="lang-switch-btn" data-lang="en">EN</button>
+    </div>
+    <img src="./assets/LOGOKAFEENN.PNG" alt="Logo Kafeenn">
+    <h1>Kafeenn</h1>
+    <p data-i18n="digital.title">Carte des Boissons</p>
+  </header>
+
+  <main>
+    <section class="drinks section" id="carte">
+      <div class="container">
+        <div class="order-notice" style="margin-top: 0; margin-bottom: var(--space-6);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span data-i18n="menu.notice"><strong>À noter :</strong> Les commandes se font directement <strong>au comptoir</strong>.</span>
+        </div>
+        <div class="menu-images reveal">
+          <img src="./assets/espresso.jpg" alt="Café Kafeenn">
+          <img src="./assets/sirop-gourmand-kafeenn.jpg" alt="Sirop gourmand Kafeenn">
+          <img src="./assets/chocolat-chaud-kafeenn.jpg" alt="Chocolat chaud Kafeenn">
+        </div>
+
+        <div class="drinks__grid">
+
+          <!-- Cafés chauds -->
+          <div class="drinks__category reveal">
+            <div class="drinks__category-header">
+              <div class="drinks__category-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
+              </div>
+              <h3 class="drinks__category-title" data-i18n="cat.hot">Cafés Chauds</h3>
+            </div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.espresso">Expresso</span><span class="drinks__item-price">2,00 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.doppio">Doppio</span><span class="drinks__item-price">3,00 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.long_black">Long Black</span><span class="drinks__item-price">2,10 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.macchiato">Macchiato</span><span class="drinks__item-price">2,30 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.cappuccino">Cappuccino</span><span class="drinks__item-price">3,60 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.latte">Latte</span><span class="drinks__item-price">3,90 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.latte_macchiato">Latte macchiato</span><span class="drinks__item-price">4,00 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.flat_white">Flat White</span><span class="drinks__item-price">4,60 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.mocaccino">Mocaccino</span><span class="drinks__item-price">4,80 €</span></div>
+          </div>
+
+          <!-- Boissons gourmandes -->
+          <div class="drinks__category reveal">
+            <div class="drinks__category-header">
+              <div class="drinks__category-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              </div>
+              <h3 class="drinks__category-title" data-i18n="cat.gourmand">Boissons Gourmandes</h3>
+            </div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.hot_choc">Chocolat chaud</span><span class="drinks__item-price">3,60 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.viennese_choc">Chocolat viennois</span><span class="drinks__item-price">4,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.matcha_latte">Matcha latte</span><span class="drinks__item-price">4,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.chai_latte">Chai latte</span><span class="drinks__item-price">4,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.hojicha_latte">Hojicha latte</span><span class="drinks__item-price">4,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.ube_latte">Ube latte</span><span class="drinks__item-price">4,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.viennese_latte">Latte viennois</span><span class="drinks__item-price">4,80 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.turmeric_chai">Curcuma chai</span><span class="drinks__item-price">4,50 €</span></div>
+          </div>
+
+          <!-- Thés & Infusions -->
+          <div class="drinks__category reveal">
+            <div class="drinks__category-header">
+              <div class="drinks__category-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 110 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+              </div>
+              <h3 class="drinks__category-title" data-i18n="cat.tea">Thés & Infusions</h3>
+            </div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.cup">Tasse</span><span class="drinks__item-price">3,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.teapot">Théière</span><span class="drinks__item-price">5,50 €</span></div>
+            
+            <div class="drinks__tea-list">
+              <h4 class="drinks__tea-type" data-i18n="drink.green_teas">Thés verts</h4>
+              <ul class="drinks__tea-items">
+                <li data-i18n="drink.plain">Nature</li>
+                <li data-i18n="drink.peppermint">Menthe poivrée</li>
+                <li data-i18n="drink.apple_plum">Pomme, prune, coing</li>
+                <li data-i18n="drink.strawberry_flower">Fraise et pétales de fleurs</li>
+                <li data-i18n="drink.apple_cinnamon">Pomme cannelle, amande, pistache</li>
+              </ul>
+              
+              <h4 class="drinks__tea-type" data-i18n="drink.black_teas">Thés noirs</h4>
+              <ul class="drinks__tea-items">
+                <li data-i18n="drink.caramel_tea">Thé noir caramel beurre salé</li>
+                <li data-i18n="drink.darjeeling">Thé Darjeeling</li>
+                <li data-i18n="drink.himalayan">Himalayan Flower</li>
+                <li data-i18n="drink.yunnan">Grand Yunnan Impérial</li>
+                <li data-i18n="drink.berries_bergamot">Fruits des bois, bergamote</li>
+              </ul>
+              
+              <h4 class="drinks__tea-type" data-i18n="drink.rooibos">Rooibos</h4>
+              <ul class="drinks__tea-items">
+                <li data-i18n="drink.vanilla_velvet">Vanille Velours</li>
+                <li data-i18n="drink.lemongrass_grapefruit">Citronnelle pamplemousse orange</li>
+              </ul>
+              
+              <h4 class="drinks__tea-type" data-i18n="drink.infusions">Infusions</h4>
+              <ul class="drinks__tea-items">
+                <li data-i18n="drink.linden_mint">Tilleul menthe</li>
+                <li data-i18n="drink.verbena">Verveine</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Boissons Fraîches -->
+          <div class="drinks__category reveal">
+            <div class="drinks__category-header">
+              <div class="drinks__category-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+              </div>
+              <h3 class="drinks__category-title" data-i18n="cat.fresh">Boissons Fraîches</h3>
+            </div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.water">Eau Plancoët</span><span class="drinks__item-price">2,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.sparkling_water">Eau gazeuse Plancoët</span><span class="drinks__item-price">2,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.cola">Breizh Cola / Zero</span><span class="drinks__item-price">3,20 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.citrus">Breizh Agrume</span><span class="drinks__item-price">3,20 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.ice_tea">Breizh Ice Tea</span><span class="drinks__item-price">3,20 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.tonic">Breizh Tonic</span><span class="drinks__item-price">3,20 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.lemonade">Limonade HOUL</span><span class="drinks__item-price">3,20 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.diabolo">Diabolo</span><span class="drinks__item-price">3,90 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.organic_juice">Jus de fruit bio</span><span class="drinks__item-price">3,80 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.mocktail">Mocktail du moment</span><span class="drinks__item-price">5,80 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.homemade_lemonade">Citronnade maison</span><span class="drinks__item-price">3,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.fresh_juice">Jus de fruit pressé</span><span class="drinks__item-price">4,50 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.kombucha">Kombucha</span><span class="drinks__item-price">4,50 €</span></div>
+            <div class="drinks__item">
+              <span class="drinks__item-name"><span data-i18n="drink.syrup_glass">Verre de sirop</span><span class="drinks__item-detail" data-i18n="drink.syrup_flavors">Passion, Cerise, Citron acide, Fraise, Grenadine, Menthe verte, Pêche, Sureau</span></span>
+              <span class="drinks__item-price">2,90 €</span>
+            </div>
+          </div>
+
+          <!-- Boissons Glacées -->
+          <div class="drinks__category reveal">
+            <div class="drinks__category-header">
+              <div class="drinks__category-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.66V20a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg>
+              </div>
+              <h3 class="drinks__category-title" data-i18n="cat.cold">Boissons Glacées</h3>
+            </div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.espresso_rocks">Expresso On The Rocks</span><span class="drinks__item-price">3,20 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.iced_latte">Iced Latte</span><span class="drinks__item-price">4,80 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.mazagran">Mazagran</span><span class="drinks__item-price">4,20 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.iced_choc">Chocolat frappé</span><span class="drinks__item-price">4,60 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.milkshake">Milk-shake</span><span class="drinks__item-price">5,90 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.iced_matcha">Matcha latte frappé</span><span class="drinks__item-price">5,60 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.iced_ube">Ube latte frappé</span><span class="drinks__item-price">5,60 €</span></div>
+            <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.iced_mocha">Mocha frappé</span><span class="drinks__item-price">5,60 €</span></div>
+          </div>
+
+          <!-- Suppléments -->
+          <div class="drinks__supplements reveal">
+            <div class="drinks__category-header">
+              <div class="drinks__category-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              </div>
+              <h3 class="drinks__category-title" data-i18n="sup.title">Suppléments</h3>
+            </div>
+            <div class="drinks__supplements-grid">
+              <div class="drinks__item">
+                <span class="drinks__item-name"><span data-i18n="drink.syrup">Sirop</span><span class="drinks__item-detail" data-i18n="drink.syrup_options">Noisette, Vanille, Cookie, Chocolat, Caramel, Dubai</span></span>
+                <span class="drinks__item-price">0,80 €</span>
+              </div>
+              <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.plant_milk">Lait végétal (avoine)</span><span class="drinks__item-price">0,80 €</span></div>
+              <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.whipped_cream">Chantilly</span><span class="drinks__item-price">1,00 €</span></div>
+              <div class="drinks__item"><span class="drinks__item-name" data-i18n="drink.topping">Topping cookie / brownies</span><span class="drinks__item-price">0,60 €</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="padding: var(--space-6) 0; text-align: center; margin-top: var(--space-8);">
+    <div class="container">
+      <span style="font-size: var(--text-sm); color: rgba(250,246,239,0.6);" data-i18n="footer.rights">© 2026 Kafeenn Coffee Shop</span>
+    </div>
+  </footer>
+
+  <script src="./translations.js"></script>
+</body>
+</html>

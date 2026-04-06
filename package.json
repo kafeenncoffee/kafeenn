@@ -1,0 +1,13 @@
+{
+  "name": "kafeenn-coffee-shop",
+  "version": "1.0.0",
+  "description": "Kafeenn Coffee Shop",
+  "scripts": {
+    "dev": "vite --port 3000 --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --port 3000 --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "vite": "^8.0.4"
+  }
+}
